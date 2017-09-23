@@ -36,6 +36,7 @@ endif
 
 "----------WinManager设置-----------"
 let g:winManagerWindowLayout='FileExplorer'
+let g:winManagerWidth=20						"所占窗口宽度
 
 "-------自定义快捷键--------”
 "创建新窗口
@@ -48,8 +49,8 @@ map <F3> <C-W>l
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
 "按F5键重新生成tags文件
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
-imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
+map <F5> :!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
+imap <F5> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
 "按F6键重新生成cscope数据库文件
 map <F6> :!cscope -Rbq<CR><CR>
 imap <F6> <ESC>:!cscope -Rbq<CR><CR>i
@@ -86,7 +87,7 @@ map f :cp<CR>
 map t /<C-R>=expand("<cword>")<CR><CR>
 map q ?<C-R>=expand("<cword>")<CR><CR>
 "追踪tags
-map > <C-]>
+map < <C-]>
 "剪切或者复制一个单词
 map N viw
 map F viws
