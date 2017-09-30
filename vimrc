@@ -34,9 +34,11 @@ if has("cscope")
 	set csverb
 endif
 
-"----------WinManager设置-----------"
-let g:winManagerWindowLayout='FileExplorer'
-let g:winManagerWidth=20						"所占窗口宽度
+"--------nerdtree设置--------"
+let NERDTreeMinimalUI = 1						"不显示帮助面板
+let NERDTreeDirArrows = 0 						"目录箭头：1-显示箭头 0-传统+-|号
+let NERDTreeWinSize = 19 						"窗口宽度
+let NERDTreeIgnore = ['\ags$', '\.out$', '\~$']	"忽略以ags,.out,~结尾的文件
 
 "-------自定义快捷键--------”
 "创建新窗口
@@ -64,8 +66,8 @@ imap <F9> <ESC>:cw<CR><C-W>ki
 "打开/关闭标签窗口
 map <F10> <C-W>k:TlistToggle<CR><C-W>l
 imap <F10> <ESC><C-W>k:TlistToggle<CR><C-W>l
-"用WinManager插件打开目录
-nmap L :WMToggle<CR><C-W>h
+"打开/关闭nerdtree插件
+nmap L :NERDTreeToggle<CR><C-W>h
 "上下切换窗口
 map <TAB> <C-W>j
 map ' <C-W>k
