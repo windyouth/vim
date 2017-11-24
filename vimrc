@@ -18,6 +18,7 @@ let Tlist_File_Fold_Auto_Close=0 				"非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 					"当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 				"是否一直处理tags.1:处理;0:不处理
 let Tlist_Inc_Winwidth=0						"这个值好像设了也没用
+let Tlist_WinWidth = 25							"窗口宽度
 
  "-- Cscope setting --
 if has("cscope")
@@ -50,12 +51,9 @@ map <F3> <C-W>l
 "保存
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
-"按F5键重新生成tags文件
-map <F5> :!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
-imap <F5> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
-"按F6键重新生成cscope数据库文件
-map <F6> :!cscope -Rbq<CR><CR>
-imap <F6> <ESC>:!cscope -Rbq<CR><CR>i
+"打开新标签
+map <F5> :tabnew blank<CR>
+imap <F5> <ESC>:tabnew blank<CR>
 "根据本文件内自动补全
 imap <F7> <C-X><C-N>
 "根据包含头文件内关键字补全
@@ -66,6 +64,12 @@ imap <F9> <ESC>:cw<CR><C-W>ki
 "打开/关闭标签窗口
 map <F10> <C-W>k:TlistToggle<CR><C-W>l
 imap <F10> <ESC><C-W>k:TlistToggle<CR><C-W>l
+"按F5键重新生成tags文件
+map <F11> :!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
+imap <F11> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
+"按F6键重新生成cscope数据库文件
+map <F12> :!cscope -Rbq<CR><CR>
+imap <F12> <ESC>:!cscope -Rbq<CR><CR>i
 "打开/关闭nerdtree插件
 nmap L :NERDTreeToggle<CR><C-W>h
 "上下切换窗口
@@ -95,3 +99,8 @@ map N viw
 map F viws
 map K viwx
 map W yiw
+"左右切换标签
+map <C-L> :tabn<CR>
+imap <C-L> <ESC>:tabn<CR>
+map <C-H> :tabp<CR>
+imap <C-H> <ESC>:tabp<CR>
