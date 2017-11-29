@@ -52,8 +52,8 @@ map <F3> <C-W>l
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
 "打开新标签
-map <F5> :tabnew blank<CR>
-imap <F5> <ESC>:tabnew blank<CR>
+map <F6> :tabnew blank<CR>L
+imap <F6> <ESC>:tabnew blank<CR>L
 "根据本文件内自动补全
 imap <F7> <C-X><C-N>
 "根据包含头文件内关键字补全
@@ -99,7 +99,7 @@ map N viw
 map F viws
 map K viwx
 map W yiw
-"左右切换标签
+"左右切换标签，打开关闭标签。
 map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
 map <C-H> :tabp<CR>
