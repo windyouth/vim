@@ -39,7 +39,7 @@ endif
 let NERDTreeMinimalUI = 1						"不显示帮助面板
 let NERDTreeDirArrows = 0 						"目录箭头：1-显示箭头 0-传统+-|号
 let NERDTreeWinSize = 19 						"窗口宽度
-let NERDTreeIgnore = ['\ags$', '\.out$', '\~$']	"忽略以ags,.out,~结尾的文件
+let NERDTreeIgnore = ['\.out$', '\~$']	"忽略以ags,.out,~结尾的文件
 
 "-------自定义快捷键--------”
 "创建新窗口
@@ -51,13 +51,13 @@ map <F3> <C-W>l
 "保存
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
-"打开新标签
-map <F6> :tabnew blank<CR>L
-imap <F6> <ESC>:tabnew blank<CR>L
 "根据本文件内自动补全
-imap <F7> <C-X><C-N>
+imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
-imap <F8> <C-X><C-I>
+imap <F6> <C-X><C-I>
+"打开新标签
+map <F8> :tabnew blank<CR>L
+imap <F8> <ESC>:tabnew blank<CR>L
 "打开quickfix窗口，quickfix窗口要先做一次cscope操作后才能打开。
 map <F9> :cw<CR><C-W>k
 imap <F9> <ESC>:cw<CR><C-W>ki
@@ -91,7 +91,7 @@ map n :cn<CR>
 map f :cp<CR>
 "文件内查找关键字
 map t /<C-R>=expand("<cword>")<CR><CR>
-map q ?<C-R>=expand("<cword>")<CR><CR>
+map Q ?<C-R>=expand("<cword>")<CR><CR>
 "追踪tags
 map < <C-]>
 "剪切或者复制一个单词
@@ -104,3 +104,5 @@ map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
 map <C-H> :tabp<CR>
 imap <C-H> <ESC>:tabp<CR>
+"保存并退出
+map q L:mksession!<CR>:qall<CR>
