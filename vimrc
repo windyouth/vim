@@ -91,7 +91,7 @@ map n :cn<CR>
 map f :cp<CR>
 "文件内查找关键字
 map t /<C-R>=expand("<cword>")<CR><CR>
-map Q ?<C-R>=expand("<cword>")<CR><CR>
+map q ?<C-R>=expand("<cword>")<CR><CR>
 "追踪tags
 map < <C-]>
 "剪切或者复制一个单词
@@ -104,5 +104,3 @@ map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
 map <C-H> :tabp<CR>
 imap <C-H> <ESC>:tabp<CR>
-"保存并退出
-map q L:mksession!<CR>:qall<CR>
