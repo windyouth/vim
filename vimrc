@@ -39,7 +39,11 @@ endif
 let NERDTreeMinimalUI = 1						"不显示帮助面板
 let NERDTreeDirArrows = 0 						"目录箭头：1-显示箭头 0-传统+-|号
 let NERDTreeWinSize = 19 						"窗口宽度
-let NERDTreeIgnore = ['\.out$', '\~$']	"忽略以ags,.out,~结尾的文件
+let NERDTreeIgnore = ['\.out$', '\~$']			"忽略以.out,~结尾的文件
+"vim打开时不指定具体文件，自动使用nerdtree
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"vim打开某一目录时，自动使用nerdtree
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 "-------自定义快捷键--------”
 "创建新窗口
@@ -56,8 +60,8 @@ imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
 imap <F6> <C-X><C-I>
 "打开新标签
-map <F8> :tabnew blank<CR>L
-imap <F8> <ESC>:tabnew blank<CR>L
+map <F8> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+imap <F8> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
 "打开quickfix窗口，quickfix窗口要先做一次cscope操作后才能打开。
 map <F9> :cw<CR><C-W>k
 imap <F9> <ESC>:cw<CR><C-W>ki
@@ -70,8 +74,6 @@ imap <F11> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<
 "按F6键重新生成cscope数据库文件
 map <F12> :!cscope -Rbq<CR><CR>
 imap <F12> <ESC>:!cscope -Rbq<CR><CR>i
-"打开/关闭nerdtree插件
-nmap L :NERDTreeToggle<CR><C-W>h
 "上下切换窗口
 map <TAB> <C-W>j
 map ' <C-W>k
@@ -93,12 +95,16 @@ map f :cp<CR>
 map t /<C-R>=expand("<cword>")<CR><CR>
 map q ?<C-R>=expand("<cword>")<CR><CR>
 "追踪tags
-map < <C-]>
+map g; <C-]>
+"打开/关闭nerdtree插件
+nmap gm :NERDTreeToggle<CR><C-W>h
 "剪切或者复制一个单词
-map N viw
-map F viws
-map K viwx
-map W yiw
+map gj yiw
+map gk viwp
+map gl viwx
+map gi viws
+"退出程序
+map gh :qall<CR>
 "左右切换标签，打开关闭标签。
 map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
