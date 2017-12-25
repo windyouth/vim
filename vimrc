@@ -99,10 +99,14 @@ map g; <C-]>
 "打开/关闭nerdtree插件
 nmap gm :NERDTreeToggle<CR><C-W>h
 "剪切或者复制一个单词
-map gj yiw
-map gk viwp
-map gl viwx
-map gi viws
+"map gj yiw
+"map gk viwp
+"map gl viwx
+"map gi viws
+map gi yiw
+map go viwp
+map gl viws
+map gn viwx
 "退出程序
 map gh :qall<CR>
 "左右切换标签，打开关闭标签。
