@@ -1,8 +1,8 @@
 "-------基本设置-------“
-set tabstop=4								"设置tab键长度
-set cindent									"使用C/C++语言的自动缩进方式
-set shiftwidth=4							"自动缩进使用4个空格
-set number									"使用行号
+set tabstop=4									"设置tab键长度
+set cindent										"使用C/C++语言的自动缩进方式
+set shiftwidth=4								"自动缩进使用4个空格
+set number										"使用行号
 
 "-------注册tags文件所在的目录-------"
 set tags=tags
@@ -36,16 +36,17 @@ if has("cscope")
 endif
 
 "--------nerdtree设置--------"
-let NERDTreeMinimalUI = 1						"不显示帮助面板
-let NERDTreeDirArrows = 0 						"目录箭头：1-显示箭头 0-传统+-|号
-let NERDTreeWinSize = 19 						"窗口宽度
-let NERDTreeIgnore = ['\.out$', '\~$']			"忽略以.out,~结尾的文件
+let NERDTreeMinimalUI = 1												"不显示帮助面板
+let NERDTreeDirArrows = 0 												"目录箭头：1-显示箭头 0-传统+-|号
+let NERDTreeWinSize = 19 												"窗口宽度
+let NERDTreeIgnore = ['\.out$', '\~$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
 "vim打开时不指定具体文件，自动使用nerdtree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "vim打开某一目录时，自动使用nerdtree
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-"-------自定义快捷键--------”
+"-----------------------------自定义快捷键------------------------”
+
 "创建新窗口
 map <F1> :split blank<CR><C-W>h
 imap <F1> <ESC>:split blank<CR><C-W>h
@@ -94,6 +95,8 @@ map f :cp<CR>
 "文件内查找关键字
 map t /<C-R>=expand("<cword>")<CR><CR>
 map q ?<C-R>=expand("<cword>")<CR><CR>
+"关闭标签
+map ge :tabc<CR>
 "追踪tags
 map g; <C-]>
 "打开/关闭nerdtree插件
