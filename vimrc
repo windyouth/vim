@@ -102,7 +102,7 @@ map g; <C-]>
 "打开/关闭nerdtree插件
 nmap gm :NERDTreeToggle<CR><C-W>h
 "退出程序
-map gn :qall<CR>
+map gk :qall<CR>
 "剪切或者复制一个单词
 map gi viws
 map go viwp
