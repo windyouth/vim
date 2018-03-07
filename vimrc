@@ -102,12 +102,12 @@ map g; <C-]>
 "打开/关闭nerdtree插件
 nmap gm :NERDTreeToggle<CR><C-W>h
 "退出程序
-map gk :qall<CR>
+map gn :qall<CR>
 "剪切或者复制一个单词
 map gi viws
 map go viwp
-map gh yiw
-map gl viwx
+map gl yiw
+map gh viwx
 "左右切换标签，打开关闭标签。
 map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
