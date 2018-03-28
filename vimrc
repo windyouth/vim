@@ -3,7 +3,10 @@ set tabstop=4									"设置tab键长度
 set cindent										"使用C/C++语言的自动缩进方式
 set shiftwidth=4								"自动缩进使用4个空格
 set number										"使用行号
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1	"编码识别
+colorscheme evening								"设置配色方案和语法高亮
+syntax enable
+syntax on
 
 "-------注册tags文件所在的目录-------"
 set tags=tags
