@@ -1,12 +1,10 @@
 "-------基本设置-------“
 set tabstop=4									"设置tab键长度
-set cindent										"使用C/C++语言的自动缩进方式
 set shiftwidth=4								"自动缩进使用4个空格
+set expandtab									"tab自动展开为空格
+set cindent										"使用C/C++语言的自动缩进方式
 set number										"使用行号
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1	"编码识别
-colorscheme evening								"设置配色方案和语法高亮
-syntax enable
-syntax on
+set fileencodings=utf-8,gb18030					"编码识别
 
 "-------注册tags文件所在的目录-------"
 set tags=tags
@@ -22,7 +20,7 @@ let Tlist_File_Fold_Auto_Close=0 				"非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 					"当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 				"是否一直处理tags.1:处理;0:不处理
 let Tlist_Inc_Winwidth=0						"这个值好像设了也没用
-let Tlist_WinWidth = 25							"窗口宽度
+let Tlist_WinWidth=30							"窗口宽度
 
  "-- Cscope setting --
 if has("cscope")
@@ -42,7 +40,7 @@ endif
 "--------nerdtree设置--------"
 let NERDTreeMinimalUI = 1												"不显示帮助面板
 let NERDTreeDirArrows = 0 												"目录箭头：1-显示箭头 0-传统+-|号
-let NERDTreeWinSize = 19 												"窗口宽度
+let NERDTreeWinSize = 25 												"窗口宽度
 let NERDTreeIgnore = ['\.out$', '\~$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
 "vim打开时不指定具体文件，自动使用nerdtree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
