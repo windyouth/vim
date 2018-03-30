@@ -20,7 +20,7 @@ let Tlist_File_Fold_Auto_Close=0 				"非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 					"当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 				"是否一直处理tags.1:处理;0:不处理
 let Tlist_Inc_Winwidth=0						"这个值好像设了也没用
-let Tlist_WinWidth=30							"窗口宽度
+let Tlist_WinWidth=35							"窗口宽度
 
  "-- Cscope setting --
 if has("cscope")
@@ -40,8 +40,8 @@ endif
 "--------nerdtree设置--------"
 let NERDTreeMinimalUI = 1												"不显示帮助面板
 let NERDTreeDirArrows = 0 												"目录箭头：1-显示箭头 0-传统+-|号
-let NERDTreeWinSize = 25 												"窗口宽度
-let NERDTreeIgnore = ['\.out$', '\~$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
+let NERDTreeWinSize = 30 												"窗口宽度
+let NERDTreeIgnore = ['\.out$', '\~$', '\.vcxproj$', '\.filters$', '\.user$', '\.sln$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
 "vim打开时不指定具体文件，自动使用nerdtree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "vim打开某一目录时，自动使用nerdtree
@@ -62,6 +62,9 @@ imap <F4> <ESC>:wall<CR>
 imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
 imap <F6> <C-X><C-I>
+"关闭下一个窗口
+map <F7> <C-W>j:q<CR>
+imap <F7> <ESC><C-W>j:q<CR>
 "打开新标签
 map <F8> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
 imap <F8> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
@@ -115,3 +118,6 @@ map <C-L> :tabn<CR>
 imap <C-L> <ESC>:tabn<CR>
 map <C-H> :tabp<CR>
 imap <C-H> <ESC>:tabp<CR>
+"调整窗口宽窄
+map > :vertical resize+5<CR>
+map < :vertical resize-5<CR>
