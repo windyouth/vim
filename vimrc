@@ -14,13 +14,13 @@ set tags+=/usr/src/kernels/tags
 
 "-- Taglist setting --
 let Tlist_Ctags_Cmd='ctags'						"因为我们放在环境变量里，所以可以直接执行
-let Tlist_Use_Right_Window=0 					"让窗口显示在右边，0的话就是显示在左边
+let Tlist_Use_Right_Window=1 					"让窗口显示在右边，0的话就是显示在左边
 let Tlist_Show_One_File=1 						"让taglist可以不能同时展示多个文件的函数列表
 let Tlist_File_Fold_Auto_Close=0 				"非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 					"当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 				"是否一直处理tags.1:处理;0:不处理
 let Tlist_Inc_Winwidth=0						"这个值好像设了也没用
-let Tlist_WinWidth=50							"窗口宽度
+let Tlist_WinWidth=30							"窗口宽度
 
  "-- Cscope setting --
 if has("cscope")
@@ -39,7 +39,7 @@ endif
 
 "--------nerdtree设置--------"
 let NERDTreeMinimalUI = 1												"不显示帮助面板
-let NERDTreeWinPos = "right"											"显示在右边
+let NERDTreeWinPos = "left"								    			"显示在左/右边
 let NERDTreeDirArrows = 0 												"目录箭头：1-显示箭头 0-传统+-|号
 let NERDTreeWinSize = 30 												"窗口宽度
 let NERDTreeIgnore = ['\.out$', '\~$', '\.vcxproj$', '\.filters$', '\.user$', '\.sln$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
@@ -59,19 +59,16 @@ map <F3> <C-W>l
 "保存
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
-"根据本文件内自动补全
-"imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
-"imap <F6> <C-X><C-I>
 imap <F5> <C-X><C-I>
-"关闭下一个窗口
-map <F7> <C-W>j:q<CR>
-imap <F7> <ESC><C-W>j:q<CR>
+"根据本文件内自动补全
+imap <F6> <C-X><C-N>
 "打开新标签
-"map <F8> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-"imap <F8> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-map <F6> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-imap <F6> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+map <F7> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+imap <F7> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+"关闭下一个窗口
+map <F8> <C-W>j:q<CR>
+imap <F8> <ESC><C-W>j:q<CR>
 "打开quickfix窗口，quickfix窗口要先做一次cscope操作后才能打开。
 map <F9> :cw<CR><C-W>k
 imap <F9> <ESC>:cw<CR><C-W>ki
@@ -90,7 +87,7 @@ map ' <C-W>k
 "cscope的快捷键，查找函数定义。
 map ; :cs find s <C-R>=expand("<cword>")<CR><CR>
 map . :cs find g <C-R>=expand("<cword>")<CR><CR>
-"map m :cs find g <C-R>=expand("<cword>")<CR><CR>
+map g. :tag <C-R>=expand("<cword>")<CR><CR>1<CR><CR>
 map c :cs find c <C-R>=expand("<cword>")<CR><CR>
 "翻页
 map m <C-D> 
@@ -116,7 +113,7 @@ nmap gm :NERDTreeToggle<CR><C-W>h
 map gn :qall<CR>
 "剪切或者复制一个单词
 map gi viws
-map go viwp
+map go viwpyiw
 map gl yiw
 map gh viwx
 "左右切换标签，打开关闭标签。
