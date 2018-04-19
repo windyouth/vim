@@ -20,7 +20,7 @@ let Tlist_File_Fold_Auto_Close=0 				"非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 					"当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 				"是否一直处理tags.1:处理;0:不处理
 let Tlist_Inc_Winwidth=0						"这个值好像设了也没用
-let Tlist_WinWidth=30							"窗口宽度
+let Tlist_WinWidth=45							"窗口宽度
 
  "-- Cscope setting --
 if has("cscope")
