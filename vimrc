@@ -4,7 +4,9 @@ set shiftwidth=4								"自动缩进使用4个空格
 set expandtab									"tab自动展开为空格
 set cindent										"使用C/C++语言的自动缩进方式
 set number										"使用行号
-set fileencodings=utf-8,gb18030					"编码识别
+set fileencodings=utf-8,gb18030	    			"编码识别
+"取消注释换行时自动加注释符号
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "-------注册tags文件所在的目录-------"
 set tags=tags
@@ -63,12 +65,12 @@ imap <F4> <ESC>:wall<CR>
 imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
 imap <F6> <C-X><C-I>
-"打开新标签
-map <F7> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-imap <F7> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
 "关闭下一个窗口
-map <F8> <C-W>j:q<CR>
-imap <F8> <ESC><C-W>j:q<CR>
+map <F7> <C-W>j:q<CR>
+imap <F7> <ESC><C-W>j:q<CR>
+"打开新标签
+map <F8> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+imap <F8> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
 "打开quickfix窗口，quickfix窗口要先做一次cscope操作后才能打开。
 map <F9> :cw<CR><C-W>k
 imap <F9> <ESC>:cw<CR><C-W>ki
@@ -126,3 +128,5 @@ map > :vertical resize+5<CR>
 map < :vertical resize-5<CR>
 "其他定义
 map Y y$
+imap <C-J> <ESC>pi
+imap <C-U> <ESC>ui
