@@ -44,7 +44,7 @@ let NERDTreeMinimalUI = 1												"不显示帮助面板
 let NERDTreeWinPos = "left"								    			"显示在左/右边
 let NERDTreeDirArrows = 0 												"目录箭头：1-显示箭头 0-传统+-|号
 let NERDTreeWinSize = 20 												"窗口宽度
-let NERDTreeIgnore = ['\.out$', '\~$', '\.vcxproj$', '\.filters$', '\.user$', '\.sln$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
+let NERDTreeIgnore = ['\.out$', '\.o$', '\.d$', 'tags', 'obj', 'hlnet']			"忽略以.out,~结尾的文件
 "vim打开时不指定具体文件，自动使用nerdtree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "vim打开某一目录时，自动使用nerdtree
@@ -55,9 +55,12 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "创建新窗口
 map <F1> :split blank<CR><C-W>h
 imap <F1> <ESC>:split blank<CR><C-W>h
-"切换窗口
+"切换到左边窗口
 map <F2> <C-W>h
+imap <F2> <ESC><C-W>h
+"切换到右边窗口
 map <F3> <C-W>l
+imap <F3> <ESC><C-W>l
 "保存
 map <F4> :wall<CR>
 imap <F4> <ESC>:wall<CR>
@@ -65,24 +68,25 @@ imap <F4> <ESC>:wall<CR>
 imap <F5> <C-X><C-N>
 "根据包含头文件内关键字补全
 imap <F6> <C-X><C-I>
-"关闭下一个窗口
-map <F7> <C-W>j:q<CR>
-imap <F7> <ESC><C-W>j:q<CR>
-"打开新标签
-map <F8> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-imap <F8> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
-"打开quickfix窗口，quickfix窗口要先做一次cscope操作后才能打开。
-map <F9> :cw<CR><C-W>k
-imap <F9> <ESC>:cw<CR><C-W>ki
+"关闭quickfix窗口
+map <F7> :cclose<CR>
+imap <F7> <ESC>:cclose<CR>i
+"打开quickfix窗口
+map <F8> :copen 7<CR>
+imap <F8> <ESC>:copen 7<CR>
 "打开/关闭标签窗口
-map <F10> <C-W>k:TlistToggle<CR><C-W>l
-imap <F10> <ESC><C-W>k:TlistToggle<CR><C-W>l
-"按F5键重新生成tags文件
-map <F11> :!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
-imap <F11> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
-"按F6键重新生成cscope数据库文件
-map <F12> :!cscope -Rbq<CR><CR>
-imap <F12> <ESC>:!cscope -Rbq<CR><CR>i
+map <F9> <C-W>k:TlistToggle<CR><C-W>l
+imap <F9> <ESC><C-W>k:TlistToggle<CR><C-W>l
+"重新生成tags文件
+map <F10> :!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>
+imap <F10> <ESC>:!ctags -R --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q<CR><CR>i
+"重新生成cscope数据库文件
+map <F11> :!cscope -Rbq<CR><CR>
+imap <F11> <ESC>:!cscope -Rbq<CR><CR>i
+"打开新标签
+map <F12> :tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+imap <F12> <ESC>:tabnew blank<CR>:NERDTreeToggle<CR><C-W>h
+
 "上下切换窗口
 map <TAB> <C-W>j
 map ' <C-W>k
@@ -126,7 +130,7 @@ imap <C-H> <ESC>:tabp<CR>
 "调整窗口宽窄
 map > :vertical resize+5<CR>
 map < :vertical resize-5<CR>
-"其他定义
+"复制到本行末尾
 map Y y$
-imap <C-J> <ESC>pi
+"撤销后保持插入模式
 imap <C-U> <ESC>ui
